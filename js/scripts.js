@@ -20,6 +20,8 @@ var ticTacToe = {
 	//Possible Win Patterns
 	wins: [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [6,4,2]],
 
+	//Record Number of Turns
+	number_of_turns: 0,
 	startGame: function() {
 		$("#menu").empty().append("Player <strong>" + ticTacToe.turn + "'s</strong> turn!");
 		//Empty the Squares
@@ -29,19 +31,28 @@ var ticTacToe = {
 	},
 
 	playerChoice: function() {
+		if (ticTacToe.number_of_turns < 9) {
 			if(ticTacToe.turn === "X") {
 				$("td").append("X");
 				this.turn = "O";
 				$("#menu").empty().append("Player <strong>" + ticTacToe.turn + "'s</strong> turn!");
 				console.log("turn is " + ticTacToe.turn);
+				this.number_of_turns++;
 			} else if(ticTacToe.turn === "O") {
 				$("td").append("O");
 				this.turn = "X";
 				$("#menu").empty().append("Player <strong>" + ticTacToe.turn + "'s</strong> turn!");
 				console.log("turn is " + ticTacToe.turn);
+				this.number_of_turns++;
 			}
-		},
+		} else {
+			$('td').empty();
+			$("#menu").empty();
+			alert("Game is over!")
+		}
+	},
 };
+//End of Game Object
 
 //Run Start Function on Page Load
 
