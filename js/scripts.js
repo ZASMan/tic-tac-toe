@@ -26,7 +26,7 @@ var ticTacToe = {
 	//Function for Initializing Game
 	startGame: function() {
 		//Reset Number of Turns
-		ticTacToe.number_of_turns = 0;
+		this.number_of_turns = 0;
 		//Append Player Score
 		$("#menu").empty().append("Player <strong>" + ticTacToe.turn + "'s</strong> turn!");
 		//Empty the Squares
@@ -36,7 +36,7 @@ var ticTacToe = {
 	},
 
 	playerChoice: function() {
-		if (ticTacToe.number_of_turns < 9) {
+		if (ticTacToe.number_of_turns > 8) {
 			if(ticTacToe.turn === "X") {
 				$("td").append("X");
 				this.turn = "O";
@@ -69,6 +69,24 @@ $(document).ready(function() {
 });
 
 $("td").click(function() {
-	ticTacToe.playerChoice();
-});
+	if (ticTacToe.number_of_turns < 9) {
+		if(ticTacToe.turn === "X") {
+			$(this).append("X");
+			ticTacToe.turn = "O";
+			$("#menu").empty().append("Player <strong>" + ticTacToe.turn + "'s</strong> turn!");
+			console.log("turn is " + ticTacToe.turn);
+			ticTacToe.number_of_turns++;
+		} else if(ticTacToe.turn === "O") {
+			$(this).append("O");
+			ticTacToe.turn = "X";
+			$("#menu").empty().append("Player <strong>" + ticTacToe.turn + "'s</strong> turn!");
+			console.log("turn is " + ticTacToe.turn);
+			ticTacToe.number_of_turns++;
+		}
+		//Game is over- all td's are full
+		} else {
+			ticTacToe.startGame();
+			alert("Game is over!");
+		}
+	});
 
