@@ -22,7 +22,12 @@ var ticTacToe = {
 
 	//Record Number of Turns
 	number_of_turns: 0,
+
+	//Function for Initializing Game
 	startGame: function() {
+		//Reset Number of Turns
+		ticTacToe.number_of_turns = 0;
+		//Append Player Score
 		$("#menu").empty().append("Player <strong>" + ticTacToe.turn + "'s</strong> turn!");
 		//Empty the Squares
 		if($("td:not(:empty)").length) {
@@ -45,12 +50,14 @@ var ticTacToe = {
 				console.log("turn is " + ticTacToe.turn);
 				this.number_of_turns++;
 			}
+		//Game is over- all td's are full
 		} else {
-			$('td').empty();
-			$("#menu").empty();
-			alert("Game is over!")
+			ticTacToe.startGame();
+			alert("Game is over!");
 		}
 	},
+
+
 };
 //End of Game Object
 
