@@ -35,8 +35,18 @@ var ticTacToe = {
 
 	//Function for Restarting Game
 	restartGame: function() {
-		//Rebind click function
+		//Rebind click to 'td' elements
 		tdClick();
+		//Reset Board
+		this.board.cell1 = "";
+		this.board.cell2 = "";
+		this.board.cell3 = "";
+		this.board.cell4 = "";
+		this.board.cell5 = "";
+		this.board.cell6 = "";
+		this.board.cell7 = "";
+		this.board.cell8 = "";
+		this.board.cell9 = "";
 		//Reset number of turns
 		this.number_of_turns = 0;
 		//Reset Player Turn
@@ -49,10 +59,16 @@ var ticTacToe = {
 		if($("td:not(:empty)").length) {
 			$('td:not(:empty)').empty();
 		}
+		//Check Elements
+		console.log(this.board);
+		console.log("td length: " + $("td:not(:empty)").length);
+		console.log("Number of turns is " + this.number_of_turns);
 	},
 
-	// Check for Winner. We must check if the values of each row are equal using board object
-	//AND if the values have a length greater than one
+	/* Check for Winner. We must check if the values of each row are equal using board object
+	AND if the values have a length greater than one
+	Game will restart as soon as one of the rows are won. Otherwise, it will restart the game
+	Since there is no winner*/
 	winCheck: function() {
 		//Top Row Across Equal
 		if (this.board.cell1 === this.board.cell2 && this.board.cell1 === this.board.cell3 && this.board.cell2 === this.board.cell3 && this.board.cell1.length > 0 && this.board.cell2.length > 0 && this.board.cell3.length > 0) {
