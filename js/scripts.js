@@ -146,6 +146,7 @@ var ticTacToe = {
 				this.o_wins++;
 			}
 			this.restartGame();
+		//wincheck detects no winner and there are 9 turns, end the game
 		} else if(this.number_of_turns == 9){
 				alert("Sorry, there is no winner! Try again");
 				ticTacToe.restartGame();
@@ -173,7 +174,8 @@ $(document).ready(function() {
 });
 
 $("td").click(function() {
-	//Make sure all 9 spaces aren't filled
+	/*The click event only fires if the clicked td elements id's 
+	corresponding ticTacToe.board key value is empty */
 	if (ticTacToe.board[$(this).attr("id")] == "") {
 		if(ticTacToe.turn === "X") {
 			//Add X
@@ -201,7 +203,6 @@ $("td").click(function() {
 			ticTacToe.winCheck();
 		}
 	console.log("Total # of turns: " + ticTacToe.number_of_turns);
-	//All Spaces are filled, but no winner
 	}
 
 });
