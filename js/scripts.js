@@ -64,10 +64,7 @@ var ticTacToe = {
 		console.log("Number of turns is " + this.number_of_turns);
 	},
 
-	/* Check for Winner. We must check if the values of each row are equal using board object
-	AND if the values have a length greater than one
-	Game will restart as soon as one of the rows are won. Otherwise, it will restart the game
-	Since there is no winner*/
+	// Check for Winner. We must check if the values of each row are equal using board object
 	winCheck: function() {
 		//Top Row Across Equal
 		if (this.checkThree(1,2,3)) {
@@ -155,7 +152,7 @@ var ticTacToe = {
 			}
 	},
 
-	//Checks for equal values of three rows
+	//Checks for equal values of three cells in a row
 	checkThree: function(cellOne, cellTwo, cellThree) {
 		if ($("#cell" + cellOne.toString() + "").html() == $("#cell" + cellTwo.toString() + "").html() && 
 				$("#cell" + cellTwo.toString() + "").html() == $("#cell" + cellThree.toString() + "").html() &&
