@@ -21,14 +21,16 @@
 
       td {
         width: 100px;
+        font-size: x-large;
+        color: red;
       }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="row">
-      <h1>Win one round and then go again- some boxes appear XO or XOXO.. why?</h1>
         <div class="col-md-12">
+        <p>Click the table to begin playing! Check out my other projects on <a href="https://www.github.com/zasman">Github!</a> </p>
           <div id="player-turn">
           </div>
           <div id="player-score">
@@ -36,9 +38,9 @@
 
           <div id="game">
           <div id="board">
-            <table class="table-bordered" id="game-table">
+            <table class="table-bordered table-responsive" id="game-table" style="height: 500px; width: 500px">
 
-            <tbody>
+            <tbody class="center-text">
               <tr>
                 <td id="cell1"></td>
                 <td id="cell2"></td>
